@@ -18,6 +18,59 @@ function cycleVideos() {
     }
 }
 
+// Smooth brand logo scrolling
+class BrandScroller {
+    constructor(container, speed = 1) {
+        this.container = container;
+        this.speed = speed;
+        this.position = 0;
+        this.isRunning = false;
+        this.animationId = null;
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.container) return;
+        
+        // Get the total width of the content
+        this.contentWidth = this.container.scrollWidth / 2; // Divide by 2 because we have duplicated content
+        
+        this.start();
+    }
+    
+    start() {
+        this.isRunning = true;
+        this.animate();
+    }
+    
+    stop() {
+        this.isRunning = false;
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+        }
+    }
+    
+    animate() {
+        if (!this.isRunning) return;
+        
+        this.position -= this.speed;
+        
+        // Reset position when we've scrolled exactly one content width
+        if (Math.abs(this.position) >= this.contentWidth) {
+            this.position = 0;
+        }
+        
+        this.container.style.transform = `translateX(${this.position}px)`;
+        
+        this.animationId = requestAnimationFrame(() => this.animate());
+    }
+    
+    setSpeed(newSpeed) {
+        this.speed = newSpeed;
+    }
+}
+
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
     // Set up video cycling
@@ -25,6 +78,21 @@ document.addEventListener('DOMContentLoaded', function() {
     if (video) {
         video.addEventListener('ended', cycleVideos);
     }
+    
+    // Set up brand logo scrolling
+    const brandRows = document.querySelectorAll('.brands-row');
+    const scrollers = [];
+    
+    // Different speeds for each row
+    const speeds = [0.5, 0.3, 0.2, 0.4];
+    
+    brandRows.forEach((row, index) => {
+        const scroller = new BrandScroller(row, speeds[index]);
+        scrollers.push(scroller);
+    });
+    
+    // Store scrollers globally so they can be controlled if needed
+    window.brandScrollers = scrollers;
     
     // Handle form submission
     const inviteForm = document.querySelector('.invite-form');

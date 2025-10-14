@@ -173,17 +173,6 @@ section {
     position: relative;
 }
 
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: var(--accent-gold);
-}
-
 /* Amenities Section */
 .amenities {
     background: var(--primary-dark);
@@ -265,6 +254,9 @@ section {
 .brands {
     background: var(--primary-dark);
     color: var(--primary-light);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 .brands .section-title {
@@ -278,34 +270,53 @@ section {
     margin-bottom: 3rem;
 }
 
-.brands-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
+.brands-stream {
+    margin-top: 4rem;
+    overflow: hidden;
+    position: relative;
 }
 
-.brand-item {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 1.5rem;
-    text-align: center;
-    border-radius: 10px;
-    font-weight: 500;
+.brands-stream::before,
+.brands-stream::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.brands-stream::before {
+    left: 0;
+    background: linear-gradient(to right, var(--primary-dark), transparent);
+}
+
+.brands-stream::after {
+    right: 0;
+    background: linear-gradient(to left, var(--primary-dark), transparent);
+}
+
+.brands-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+    white-space: nowrap;
+    width: 200%;
+    position: relative;
+}
+
+.brand-row-image {
+    height: 50px;
+    width: 100%;
+    margin-left: -100px;
+    object-fit: contain;
+    opacity: 0.8;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    filter: brightness(0) invert(1);
+    flex-shrink: 0;
 }
-
-.brand-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-    border-color: var(--accent-gold);
-}
-
-.brand-item:last-child {
-    background: linear-gradient(45deg, var(--accent-gold), var(--accent-silver));
-    color: var(--primary-dark);
-    font-weight: 600;
-}
+/* Brand scrolling is now handled by JavaScript */
 
 /* CTA Section */
 .cta-section {
@@ -716,7 +727,12 @@ section {
         padding: 2rem 1.5rem;
     }
     
-    .brands-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .brands-row {
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .brand-logo {
+        height: 30px;
     }
 }
