@@ -109,8 +109,8 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 1;
 }
 
-.hero-content {
-    max-width: 600px;
+.hero-content, .cta-content, .footer-content {
+    max-width: 660px;
     margin: 0 auto;
     text-align: center;
     align-items: center;
@@ -130,14 +130,16 @@ h1, h2, h3, h4, h5, h6 {
     font-style: italic;
 }
 
-.hero-subtitle {
+.subtitle {
     font-size: 1.2rem;
     color: var(--accent-silver);
     margin: 0 auto 2.5rem;
     line-height: 1.6;
-    max-width: 500px;
+    max-width: 600px;
     font-weight: 300;
+    text-align: center;
 }
+
 
 .cta-button {
     color: var(--primary-light);
@@ -257,17 +259,11 @@ section {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .brands .section-title {
     color: var(--primary-light);
-}
-
-.brands-subtitle {
-    text-align: center;
-    font-size: 1.1rem;
-    color: var(--accent-silver);
-    margin-bottom: 3rem;
 }
 
 .brands-stream {
@@ -320,7 +316,10 @@ section {
 
 /* CTA Section */
 .cta-section {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, #3A3A4A 100%);
+    background: linear-gradient(180deg, var(--primary-dark) 0%, #3A3A4A 100%);
+    height: 80vh;
+    text-align: center;
+    justify-content: center;
 }
 
 .cta-title {
@@ -394,39 +393,11 @@ section {
 
 /* Footer */
 .footer {
-    background: var(--primary-dark);
+    background: #3A3A4A 100%;
     color: var(--primary-light);
     padding: 3rem 0 2rem;
 }
 
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.footer-section h4 {
-    margin-bottom: 1rem;
-    color: var(--accent-gold);
-}
-
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-section ul li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-section ul li a {
-    color: var(--accent-silver);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-section ul li a:hover {
-    color: var(--primary-light);
-}
 
 /* Brands Page Specific Styles */
 .brands-hero {
