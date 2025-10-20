@@ -153,7 +153,12 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    text-decoration: none;;
+    text-decoration: none;
+    transition: background 1s ease;
+}
+
+.cta-button:hover {
+    background: rgba(253, 252, 246, 0.3);
 }
 
 /* Container */
@@ -196,7 +201,7 @@ section {
 
 .amenity-item {
     text-align: left;
-    padding: 3rem 2rem;
+    padding: 2rem 2rem 3rem;
     background: rgba(255, 255, 255, 0.03);
     border-radius: 0;
     transition: all 0.4s ease;
@@ -323,53 +328,7 @@ section {
     justify-content: center;
 }
 
-.cta-title {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    color: var(--primary-light);
-}
 
-.cta-subtitle {
-    text-align: center;
-    font-size: 1.1rem;
-    color: var(--accent-silver);
-    margin-bottom: 3rem;
-}
-
-.invite-form {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.form-group {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.form-group:last-of-type {
-    margin-bottom: 2rem;
-}
-
-.form-group input,
-.form-group select {
-    flex: 1;
-    padding: 1rem;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    font-size: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--primary-light);
-    transition: border-color 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    outline: none;
-    border-color: var(--accent-gold);
-    background: rgba(255, 255, 255, 0.15);
-}
 
 /* Footer */
 .footer {
@@ -389,9 +348,6 @@ section {
     color: var(--primary-light);
 }
 
-.brands-hero .hero-subtitle {
-    color: var(--accent-silver);
-}
 
 .benefits {
     background: var(--primary-dark);
@@ -405,24 +361,35 @@ section {
 }
 
 .benefit-item {
-    text-align: center;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+    padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .benefit-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
-.benefit-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+.benefit-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--accent-gold);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.benefit-item:hover::before {
+    transform: scaleY(1);
 }
 
 .benefit-item h3 {
@@ -434,6 +401,145 @@ section {
 .benefit-item p {
     color: var(--accent-silver);
     font-size: 0.95rem;
+}
+
+.benefit-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--accent-gold);
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+}
+
+/* Results & Success Stories Carousel */
+.results-success {
+    color: var(--primary-light);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    margin-top: 4rem;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 2rem;
+    animation: scroll 30s linear infinite;
+    width: max-content;
+}
+
+.carousel-item {
+    flex-shrink: 0;
+    width: 400px;
+    padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-gold);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Result Card Styling */
+.result-card {
+    text-align: left;
+}
+
+.result-card .metric-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--accent-gold);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+    line-height: 1;
+}
+
+.metric-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+
+.result-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--primary-light);
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+/* Story Card Styling */
+.story-card {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.story-quote {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--primary-light);
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.story-author {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+}
+
+.author-name {
+    font-weight: 400;
+    color: var(--primary-light);
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+}
+
+.author-title {
+    font-size: 0.85rem;
+    color: var(--accent-silver);
+    font-weight: 300;
+}
+
+
+.metric-caption {
+    font-size: 0.85rem !important;
+    color: var(--accent-silver) !important;
+    font-weight: 300;
+}
+
+
+/* Pause animation on hover */
+.carousel-container:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 .partnership-tiers {
@@ -553,42 +659,12 @@ section {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-.success-stories {
-    background: var(--primary-dark);
-}
-
-.stories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.story-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2.5rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.story-card::before {
-    content: '"';
-    position: absolute;
-    top: -10px;
-    left: 20px;
-    font-size: 4rem;
-    color: var(--accent-gold);
-    font-family: 'Playfair Display', serif;
-}
 
 .story-quote {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
     color: var(--primary-light);
-    font-style: italic;
 }
 
 .story-author {
@@ -683,7 +759,4 @@ section {
         margin-bottom: 2rem;
     }
     
-    .brand-logo {
-        height: 30px;
-    }
 }

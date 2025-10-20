@@ -208,4 +208,19 @@ document.addEventListener('DOMContentLoaded', function() {
             hero.style.transform = `translateY(${rate}px)`;
         }
     });
+
+    // Carousel setup for seamless scrolling
+    const carouselTrack = document.querySelector('.carousel-track');
+    if (carouselTrack) {
+        // Duplicate the carousel items for seamless loop
+        const originalItems = carouselTrack.innerHTML;
+        carouselTrack.innerHTML = originalItems + originalItems;
+        
+        // Reset animation when it completes
+        carouselTrack.addEventListener('animationiteration', function() {
+            this.style.animation = 'none';
+            this.offsetHeight; // Trigger reflow
+            this.style.animation = 'scroll 30s linear infinite';
+        });
+    }
 });
