@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
     
     // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.amenity-item, .brand-item');
+    const animatedElements = document.querySelectorAll('.card-item');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';

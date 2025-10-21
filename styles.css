@@ -142,7 +142,6 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
-
 .cta-button {
     color: var(--primary-light);
     background: rgba(253, 252, 246, 0.1);
@@ -201,25 +200,59 @@ section {
     margin-right: auto;
 }
 
-.amenity-item {
+.card-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--accent-gold);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.card-item:hover::before {
+    transform: scaleY(1);
+}
+
+.card-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-light);
+}
+
+.card-item p {
+    color: var(--accent-silver);
+    font-size: 0.95rem;
+}
+
+.card-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+
+.card-item {
     text-align: left;
     padding: 2rem 2rem 3rem;
     background: rgba(255, 255, 255, 0.03);
     border-radius: 0;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
     overflow: hidden;
 }
 
-.amenity-item:hover {
+.card-item:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(212, 175, 55, 0.3);
 }
 
-.amenity-item::before {
+.card-item::before {
     content: '';
     position: absolute;
     top: 0;
@@ -228,36 +261,7 @@ section {
     height: 100%;
     background: var(--accent-gold);
     transform: scaleY(0);
-    transition: transform 0.4s ease;
-}
-
-.amenity-item:hover::before {
-    transform: scaleY(1);
-}
-
-.amenity-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: var(--accent-gold);
-    margin-bottom: 1.5rem;
-    opacity: 0.7;
-}
-
-.amenity-item h3 {
-    font-size: 1.4rem;
-    font-weight: 300;
-    margin-bottom: 1rem;
-    color: var(--primary-light);
-    letter-spacing: 0.5px;
-}
-
-.amenity-item p {
-    color: var(--accent-silver);
-    font-size: 1rem;
-    line-height: 1.6;
-    font-weight: 300;
-    opacity: 0.8;
+    transition: transform 0.3s ease
 }
 
 /* Brands Section */
@@ -366,58 +370,6 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
-}
-
-.benefit-item {
-    text-align: left;
-    padding: 2rem 2rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 0;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.benefit-item:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.15);
-}
-
-.benefit-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: var(--accent-gold);
-    transform: scaleY(0);
-    transition: transform 0.3s ease;
-}
-
-.benefit-item:hover::before {
-    transform: scaleY(1);
-}
-
-.benefit-item h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: var(--primary-light);
-}
-
-.benefit-item p {
-    color: var(--accent-silver);
-    font-size: 0.95rem;
-}
-
-.benefit-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: var(--accent-gold);
-    margin-bottom: 1rem;
-    opacity: 0.7;
 }
 
 /* Results & Success Stories Carousel */
@@ -927,7 +879,7 @@ section {
         gap: 2rem;
     }
     
-    .amenity-item {
+    .card-item {
         padding: 2rem 1.5rem;
     }
 
