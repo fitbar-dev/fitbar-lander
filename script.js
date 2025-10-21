@@ -1,22 +1,4 @@
-// Video cycling between tactile-fabric and scissors
-let currentVideoIndex = 0;
-const videos = [
-    'images/tactile-fabric.mp4',
-    'images/walking.mov',
-    'images/wine.mov',
-    'images/scissors-preview.mov',
-    'images/tux.mov'
-];
-
-function cycleVideos() {
-    const video = document.getElementById('hero-video');
-    if (video) {
-        currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-        video.src = videos[currentVideoIndex];
-        video.load();
-        video.play();
-    }
-}
+// Single video loop - no cycling needed
 
 // Smooth brand logo scrolling
 class BrandScroller {
@@ -73,10 +55,20 @@ class BrandScroller {
 
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
-    // Set up video cycling
-    const video = document.getElementById('hero-video');
-    if (video) {
-        video.addEventListener('ended', cycleVideos);
+    // Handle video autoplay and fallbacks
+    const heroVideo = document.getElementById('hero-video');
+    if (heroVideo) {
+        // Ensure video plays on load
+        heroVideo.play().catch(error => {
+            console.log('Autoplay prevented:', error);
+            // Video will still be visible, just won't autoplay
+        });
+        
+        // Handle video loading errors
+        heroVideo.addEventListener('error', function() {
+            console.log('Video failed to load');
+            // You could add a fallback background image here if needed
+        });
     }
     
     // Set up brand logo scrolling
@@ -280,26 +272,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Brands hero video cycling setup
-    const brandsHeroVideo = document.getElementById('brands-hero-video');
-    const brandsVideos = [
-        'images/brands-hero/falling-fabric.mov',
-        'images/brands-hero/girl-in-fabric.mov',
-        'images/brands-hero/which-size.mov',
-        'images/brands-hero/woman-trying-on-blouse.mov',
-        'images/brands-hero/zoom.mov'
-    ];
-    let currentBrandsVideoIndex = 1; // Start at 1 since first video is already set in HTML
-
-    function cycleBrandsVideos() {
-        if (brandsHeroVideo) {
-            brandsHeroVideo.src = brandsVideos[currentBrandsVideoIndex];
-            brandsHeroVideo.load();
-            currentBrandsVideoIndex = (currentBrandsVideoIndex + 1) % brandsVideos.length;
-        }
-    }
-
-    if (brandsHeroVideo) {
-        brandsHeroVideo.addEventListener('ended', cycleBrandsVideos);
-    }
 });
