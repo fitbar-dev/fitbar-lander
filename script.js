@@ -283,7 +283,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Brands hero video cycling setup
     const brandsHeroVideo = document.getElementById('brands-hero-video');
     const brandsVideos = [
-        'images/brands-hero/cool-guy.mov',
         'images/brands-hero/falling-fabric.mov',
         'images/brands-hero/girl-in-fabric.mov',
         'images/brands-hero/which-size.mov',
