@@ -659,10 +659,29 @@ section {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+    filter: grayscale(100%);
+}
+
+.image-tile::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--primary-dark);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .image-tile:hover .tile-image {
     transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+.image-tile:hover::after {
+    opacity: 0;
 }
 
 .criteria-description {
