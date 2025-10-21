@@ -223,4 +223,28 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.animation = 'scroll 30s linear infinite';
         });
     }
+
+    // Brands hero video cycling setup
+    const brandsHeroVideo = document.getElementById('brands-hero-video');
+    const brandsVideos = [
+        'images/brands-hero/cool-guy.mov',
+        'images/brands-hero/falling-fabric.mov',
+        'images/brands-hero/girl-in-fabric.mov',
+        'images/brands-hero/which-size.mov',
+        'images/brands-hero/woman-trying-on-blouse.mov',
+        'images/brands-hero/zoom.mov'
+    ];
+    let currentBrandsVideoIndex = 1; // Start at 1 since first video is already set in HTML
+
+    function cycleBrandsVideos() {
+        if (brandsHeroVideo) {
+            brandsHeroVideo.src = brandsVideos[currentBrandsVideoIndex];
+            brandsHeroVideo.load();
+            currentBrandsVideoIndex = (currentBrandsVideoIndex + 1) % brandsVideos.length;
+        }
+    }
+
+    if (brandsHeroVideo) {
+        brandsHeroVideo.addEventListener('ended', cycleBrandsVideos);
+    }
 });
