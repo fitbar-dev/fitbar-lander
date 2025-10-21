@@ -80,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hero Section */
 .hero {
-    min-height: 85vh;
+    min-height: 95vh;
     display: flex;
     align-items: center;
     padding: 8rem 2rem 4rem;
@@ -134,7 +134,7 @@ h1, h2, h3, h4, h5, h6 {
 .subtitle {
     font-size: 1.2rem;
     color: var(--accent-silver);
-    margin: 3rem auto;
+    margin: 3rem auto 4rem;
     line-height: 1.6;
     max-width: 600px;
     font-weight: 300;
@@ -171,7 +171,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Section Styles */
 section {
-    padding: 6rem 0;
+    padding: 4rem 0 8rem;
 }
 
 .section-title {
@@ -544,6 +544,7 @@ section {
 .brands-we-serve {
     background: var(--primary-dark);
     color: var(--primary-light);
+    margin-top: 12rem;
     padding: 0;
     height: 85vh;
     display: flex;

@@ -216,12 +216,68 @@ document.addEventListener('DOMContentLoaded', function() {
         const originalItems = carouselTrack.innerHTML;
         carouselTrack.innerHTML = originalItems + originalItems;
         
-        // Reset animation when it completes
-        carouselTrack.addEventListener('animationiteration', function() {
-            this.style.animation = 'none';
-            this.offsetHeight; // Trigger reflow
-            this.style.animation = 'scroll 30s linear infinite';
-        });
+        // JavaScript-based carousel animation
+        class CarouselScroller {
+            constructor(track) {
+                this.track = track;
+                this.position = 0;
+                this.speed = 0.5; // pixels per frame
+                this.isRunning = false;
+                this.animationId = null;
+                this.contentWidth = 0;
+                this.init();
+            }
+            
+            init() {
+                if (!this.track) return;
+                
+                // Calculate the width of one set of items (half the total width)
+                this.contentWidth = this.track.scrollWidth / 2;
+                this.start();
+            }
+            
+            start() {
+                this.isRunning = true;
+                this.animate();
+            }
+            
+            stop() {
+                this.isRunning = false;
+                if (this.animationId) {
+                    cancelAnimationFrame(this.animationId);
+                }
+            }
+            
+            animate() {
+                if (!this.isRunning) return;
+                
+                this.position -= this.speed;
+                
+                // Reset position when we've scrolled exactly one content width
+                if (Math.abs(this.position) >= this.contentWidth) {
+                    this.position = 0;
+                }
+                
+                this.track.style.transform = `translateX(${this.position}px)`;
+                
+                this.animationId = requestAnimationFrame(() => this.animate());
+            }
+        }
+        
+        // Initialize the carousel scroller
+        const carouselScroller = new CarouselScroller(carouselTrack);
+        
+        // Pause on hover
+        const carouselContainer = document.querySelector('.carousel-container');
+        if (carouselContainer) {
+            carouselContainer.addEventListener('mouseenter', () => {
+                carouselScroller.stop();
+            });
+            
+            carouselContainer.addEventListener('mouseleave', () => {
+                carouselScroller.start();
+            });
+        }
     }
 
     // Brands hero video cycling setup
