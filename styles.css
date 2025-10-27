@@ -320,13 +320,9 @@ section {
 
 .brand-row-image {
     height: 50px;
-    width: 100%;
-    margin-left: -100px;
+    margin-left: 40px;
     object-fit: contain;
     opacity: 0.8;
-    transition: all 0.3s ease;
-    filter: brightness(0) invert(1);
-    flex-shrink: 0;
 }
 /* Brand scrolling is now handled by JavaScript */
 
@@ -609,7 +605,7 @@ section {
    RESPONSIVE DESIGN
    ======================================== */
 
-/* Tablet: Drop to 2 columns on smaller screens */
+/* Small desktop/Large Tablet: Drop to 2 columns on smaller screens */
 @media (max-width: 1200px) {
     .brands-images-column {
         grid-template-columns: 1fr 1fr;
@@ -622,7 +618,7 @@ section {
     }
 }
 
-/* Mobile: General mobile styles */
+/* Mobile/Tablet: General mobile styles */
 @media (max-width: 768px) {
     .hero-content {
         grid-template-columns: 1fr;
@@ -686,7 +682,7 @@ section {
 }
 
 /* Small Mobile: Extra small screens */
-@media (max-width: 480px) {
+@media (max-width: 500px) {
     .container {
         padding: 0 1rem;
     }
@@ -717,8 +713,8 @@ section {
     }
     
     .brand-row-image {
-        width: 300%;
-        margin-left: 50px;
+        width: 250%;
+        margin-bottom: none;
     }
 }
 
