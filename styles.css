@@ -596,8 +596,9 @@ section {
 }
 
 
-
-
+.mobile-only {
+    display: none;
+}
 
 
 
@@ -611,7 +612,7 @@ section {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
     }
-    
+        
     /* Hide images 7, 8, 9 when in 2-column layout */
     .image-tile:nth-child(n+7) {
         display: none;
@@ -625,7 +626,14 @@ section {
         gap: 2rem;
         text-align: center;
     }
-    
+
+    .mobile-only {
+        display: block;
+    }
+
+    .desktop-only {
+        display: none;
+    }
     
     .nav-links {
         gap: 1rem;
